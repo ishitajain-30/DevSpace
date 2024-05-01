@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Sidebar from "./Components/Sidebar";
 
-function App() {
+// import Hashnode from "./Components/Hashnode";
+import Dev from "./Components/Dev";
+import Hackernews from "./Components/Hackernews";
+// import Producthunt from "./Components/Producthunt";
+import Github from "./Components/Github";
+import Techcrunch from "./Components/Techcrunch";
+import "./index.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="  mx-auto ">
+      <BrowserRouter>
+        <div className="flex md:flex-row flex-col">
+          <div className="md:w-1/3">
+            <Sidebar />
+          </div>
+
+          <div className=" bg-gray-50 w-full  overflow-y-scroll max-h-screen">
+            <Routes>
+              {/* <Route path="/" element={<Hashnode />} /> */}
+              <Route path="/" element={<Dev />} />
+              <Route path="/hackernews" element={<Hackernews />} />
+              {/* <Route path="/producthunt" element={<Producthunt />} /> */}
+              <Route path="/github" element={<Github />} />
+              <Route path="/techcrunch" element={<Techcrunch />} />
+            </Routes>
+          </div>
+        </div>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
